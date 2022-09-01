@@ -2,17 +2,17 @@ const { expect } = require('chai');
 
 const HashTable = require("../phases/01-implementation");
 
-describe ('Phase 1 - Hash table implementation', function () {
+describe('Phase 1 - Hash table implementation', function() {
 
   let hashTable;
 
-  beforeEach(function () {
+  beforeEach(function() {
 
     hashTable = new HashTable(2);
 
   });
 
-  it('has count, capacity, and data properties', function () {
+  it('has count, capacity, and data properties', function() {
 
     expect(hashTable.count).to.equal(0);
     expect(hashTable.capacity).to.equal(2);
@@ -20,7 +20,7 @@ describe ('Phase 1 - Hash table implementation', function () {
   });
 
 
-  it('can be initialized to different size', function () {
+  it('can be initialized to different size', function() {
 
     hashTable = new HashTable(4);
 
@@ -30,7 +30,7 @@ describe ('Phase 1 - Hash table implementation', function () {
   });
 
 
-  it('can insert a key/value pair', function () {
+  it('can insert a key/value pair', function() {
 
     hashTable = new HashTable(4);
 
@@ -50,7 +50,7 @@ describe ('Phase 1 - Hash table implementation', function () {
   });
 
 
-  it('can insert and handle hash collisions', function () {
+  it('can insert and handle hash collisions', function() {
 
     expect(hashTable.capacity).to.equal(2);
 
@@ -65,7 +65,7 @@ describe ('Phase 1 - Hash table implementation', function () {
   });
 
 
-  it('can insert and handle same key, value updates', function () {
+  it('can insert and handle same key, value updates', function() {
 
     hashTable = new HashTable(6);
 
@@ -87,7 +87,7 @@ describe ('Phase 1 - Hash table implementation', function () {
   });
 
 
-  it('can read an inserted key/value pair', function () {
+  it('can read an inserted key/value pair', function() {
 
     hashTable = new HashTable(4);
 
@@ -103,7 +103,7 @@ describe ('Phase 1 - Hash table implementation', function () {
   });
 
 
-  it('can read an inserted key/value pair including collisions', function () {
+  it('can read an inserted key/value pair including collisions', function() {
 
     expect(hashTable.capacity).to.equal(2);
 
@@ -125,7 +125,7 @@ describe ('Phase 1 - Hash table implementation', function () {
   })
 
 
-  it('can double in size while retaining data', function () {
+  it('can double in size while retaining data', function() {
 
     hashTable.insert("key1", "value1");
     hashTable.insert("key2", "value2");
@@ -145,7 +145,7 @@ describe ('Phase 1 - Hash table implementation', function () {
   });
 
 
-  it('can write and read 25 thousand values in under 1 second', function () {
+  it('can write and read 25 thousand values in under 1 second', function() {
 
     target = 25000;
 
@@ -153,7 +153,7 @@ describe ('Phase 1 - Hash table implementation', function () {
     startTime = Date.now();
 
     // Insert key/value pairs
-    for (let i = 0 ; i < target ; i++) {
+    for (let i = 0; i < target; i++) {
       hashTable.insert(`k-${i}`, `v-${i}`);
 
       if (Date.now() - startTime > timeout) {
@@ -164,7 +164,7 @@ describe ('Phase 1 - Hash table implementation', function () {
 
     // // Read key/value pairs
     startTime = Date.now();
-    for (let i = 0 ; i < target ; i++) {
+    for (let i = 0; i < target; i++) {
       expect(hashTable.read(`k-${i}`)).to.equal(`v-${i}`);
 
       if (Date.now() - startTime > timeout) {
